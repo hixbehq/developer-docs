@@ -14,44 +14,28 @@
         "tab": "FAQ & Guides",
         "groups": [
           {
-            "group": "SMS",
+            "group": "Getting Started",
             "pages": [
               "index",
-              "faq-and-guides/quickstart",
-              "faq-and-guides/development"
+              "faq-guides/quickstart",
+              "faq-guides/authentication",
+              "faq-guides/versioning"
             ]
           },
           {
-            "group": "PBX and Call Center",
+            "group": "Integration Guides",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "faq-guides/webhooks",
+              "faq-guides/error-handling",
+              "faq-guides/best-practices"
             ]
           },
           {
-            "group": "Payment",
+            "group": "API FAQs",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "Omni Chat",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "faq-guides/payment-api-faq",
+              "faq-guides/sms-api-faq",
+              "faq-guides/certification-api-faq"
             ]
           }
         ]
