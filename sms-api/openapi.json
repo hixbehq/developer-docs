@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "Hixbe SMS Gateway API",
     "version": "2026-01-01",
@@ -220,6 +220,7 @@
         ],
         "responses": {
           "200": {
+            "description": "List of sender IDs",
             "content": {
               "application/json": {
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Sender" } }
@@ -273,6 +274,7 @@
         ],
         "responses": {
           "200": {
+            "description": "List of message templates",
             "content": {
               "application/json": {
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Template" } }
@@ -305,6 +307,7 @@
         },
         "responses": {
           "201": {
+            "description": "Template created successfully",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Template" }
@@ -325,6 +328,7 @@
         ],
         "responses": {
           "200": {
+            "description": "Account balance information",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Balance" }
@@ -344,6 +348,7 @@
         ],
         "responses": {
           "200": {
+            "description": "List of registered webhooks",
             "content": {
               "application/json": {
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Webhook" } }
@@ -370,12 +375,17 @@
                   "events": { "type": "array", "items": { "type": "string" } }
                 },
                 "required": ["url", "events"]
+              },
+              "example": {
+                "url": "https://yourapp.com/sms-webhooks",
+                "events": ["message.delivered", "message.failed"]
               }
             }
           }
         },
         "responses": {
           "201": {
+            "description": "Webhook registered successfully",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/Webhook" }
