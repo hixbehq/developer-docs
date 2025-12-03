@@ -133,13 +133,11 @@ async function makeRequestWithRetry(endpoint, data, attempt = 0) {
 - `EXPIRED_CARD`
 
 **Troubleshooting:**
-<Checklist>
 - Verify card details are correct
 - Check card has sufficient funds
 - Ensure card is not expired
 - Try different card or payment method
 - Contact card issuer if issue persists
-</Checklist>
 
 ### Webhook Delivery Issues
 
@@ -148,13 +146,11 @@ async function makeRequestWithRetry(endpoint, data, attempt = 0) {
 - Events not triggering in your application
 
 **Debug Checklist:**
-<Checklist>
 - Webhook URL is publicly accessible and uses HTTPS
 - Endpoint returns 200 status code within 10 seconds
 - Webhook signature verification is implemented
 - Firewall allows incoming POST requests
 - Endpoint can handle the expected payload size
-</Checklist>
 
 **Test Webhook:**
 ```bash
@@ -220,13 +216,11 @@ function validatePhoneNumber(phone) {
 - Credential appears invalid
 
 **Troubleshooting:**
-<Checklist>
 - Verify credential ID format
 - Check credential hasn't expired
 - Ensure issuer is trusted
 - Validate against original credential data
 - Check revocation status
-</Checklist>
 
 ### Template Issues
 
@@ -252,13 +246,11 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \
 - Intermittent connection failures
 
 **Solutions:**
-<Checklist>
 - Increase timeout values (recommended: 30 seconds)
 - Implement retry logic with backoff
 - Check network connectivity
 - Verify DNS resolution
 - Use connection pooling for high traffic
-</Checklist>
 
 ```javascript
 const client = new ApiClient({
@@ -275,12 +267,10 @@ const client = new ApiClient({
 - Connection refused on 443
 
 **Fixes:**
-<Checklist>
 - Ensure system has up-to-date CA certificates
 - Use TLS 1.2 or higher
 - Verify certificate is not expired
 - Check firewall allows HTTPS traffic
-</Checklist>
 
 ## Development Environment Issues
 
@@ -375,14 +365,12 @@ Submit detailed support requests
 
 ### When to Contact Support
 
-<Checklist>
 - Persistent authentication failures
 - Unexpected API behavior
 - Account or billing issues
 - Security concerns
 - Feature requests
 - Integration blockers
-</Checklist>
 
 ### Support Request Template
 
@@ -416,7 +404,6 @@ Additional Context:
 
 ## Prevention Best Practices
 
-<Checklist>
 - Test thoroughly in sandbox before production
 - Implement proper error handling and retries
 - Monitor API usage and error rates
@@ -424,7 +411,6 @@ Additional Context:
 - Stay updated with API changes via changelog
 - Use the latest API version
 - Implement comprehensive logging
-</Checklist>
 
 ## Still Having Issues?
 

@@ -49,23 +49,19 @@ When a new version is released:
 
 ### What We Guarantee
 
-<Checklist>
 - Existing API endpoints remain functional
 - Request/response formats are stable
 - Breaking changes are introduced in new versions only
 - Deprecation notices provided 3+ months in advance
 - Migration guides provided for major changes
-</Checklist>
 
 ### What May Change
 
-<Checklist>
 - New optional fields added to responses
 - New endpoints added
 - New optional parameters added to requests
 - Performance improvements
 - Bug fixes that don't change behavior
-</Checklist>
 
 ## Version Headers
 
@@ -181,13 +177,11 @@ Watch your application logs and dashboard for any issues after deployment.
 
 ### Version Management
 
-<Checklist>
 - Always specify the version header explicitly
 - Use the latest version for new integrations
 - Test version upgrades in sandbox first
 - Monitor deprecation notices in your dashboard
 - Keep your integration documentation updated
-</Checklist>
 
 ### Code Organization
 
@@ -249,15 +243,19 @@ class HixbeClient:
 ## Support and Migration Help
 
 <CardGroup cols={2}>
+<Card title="Authentication" icon="key" href="/faq-guides/authentication">
+Learn about API keys and headers
+</Card>
+
+<Card title="Best Practices" icon="check-circle" href="/faq-guides/best-practices">
+Version management best practices
+</Card>
+
 <Card title="Changelog" icon="clock" href="/changelog">
 See all version changes and updates
 </Card>
 
-<Card title="Migration Support" icon="life-ring" href="mailto:support@hixbe.com">
+<Card title="Support" icon="life-ring" href="mailto:support@hixbe.com">
 Get help with version upgrades
-</Card>
-
-<Card title="Best Practices" icon="check-circle" href="/faq-guides/best-practices">
-Learn integration best practices
 </Card>
 </CardGroup>

@@ -116,32 +116,26 @@ All requests must include the `Hixbe-Version` header to specify which API versio
 
 ### Key Security
 
-<Checklist>
 - Never expose secret keys in client-side code
 - Use environment variables for key storage
 - Rotate keys every 90 days
 - Monitor key usage in your dashboard
 - Use restricted keys when possible
-</Checklist>
 
 ### Request Security
 
-<Checklist>
 - Always use HTTPS for all API requests
 - Validate SSL certificates
 - Implement proper error handling
 - Use idempotency keys for critical operations
 - Rate limit your requests appropriately
-</Checklist>
 
 ### Environment Separation
 
-<Checklist>
 - Use separate API keys for sandbox and production
 - Test thoroughly in sandbox before going live
 - Implement environment-specific configurations
 - Use different subdomains for testing vs production
-</Checklist>
 
 ## Authentication Errors
 
@@ -190,6 +184,14 @@ curl -X GET "https://sandbox.api.hixbe.com/payment/payment_intents" \
 <CardGroup cols={2}>
 <Card title="Troubleshooting" icon="wrench" href="/faq-guides/troubleshooting">
 Common authentication issues and solutions
+</Card>
+
+<Card title="Best Practices" icon="check-circle" href="/faq-guides/best-practices">
+Security and integration best practices
+</Card>
+
+<Card title="API Versioning" icon="tag" href="/faq-guides/versioning">
+Learn about API versioning requirements
 </Card>
 
 <Card title="Support" icon="life-ring" href="mailto:support@hixbe.com">

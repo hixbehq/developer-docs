@@ -192,14 +192,12 @@ app.post('/webhooks/hixbe', (req, res) => {
 
 ### Security Best Practices
 
-<Checklist>
 - Always use HTTPS for webhook endpoints
 - Verify webhook signatures on all requests
 - Use secret keys unique to each webhook
 - Implement idempotency to handle duplicate events
 - Validate event data before processing
 - Monitor webhook delivery in your dashboard
-</Checklist>
 
 ## Webhook Payload Format
 
@@ -299,14 +297,12 @@ Access webhook delivery logs in your dashboard:
 
 ## Best Practices
 
-<Checklist>
 - Process webhooks asynchronously to avoid timeouts
 - Implement idempotency using event IDs
 - Store webhook events for debugging
 - Monitor webhook health in your dashboard
 - Use different endpoints for different event types
 - Test thoroughly in sandbox before production
-</Checklist>
 
 ## Need Help?
 
@@ -315,11 +311,15 @@ Access webhook delivery logs in your dashboard:
 Common webhook issues and solutions
 </Card>
 
-<Card title="API Reference" icon="book" href="/payment-api/introduction">
-Complete webhook API documentation
+<Card title="Error Handling" icon="alert-triangle" href="/faq-guides/error-handling">
+Handle webhook errors gracefully
 </Card>
 
-<Card title="Support" icon="life-ring" href="mailto:support@hixbe.com">
-Get help with webhook setup
+<Card title="Best Practices" icon="check-circle" href="/faq-guides/best-practices">
+Webhook security and reliability
+</Card>
+
+<Card title="API Reference" icon="book" href="/payment-api/introduction">
+Complete webhook API documentation
 </Card>
 </CardGroup>
