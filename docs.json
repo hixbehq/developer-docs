@@ -87,6 +87,9 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "fonts": {
+  "family": "Barlow"
+},
   "navbar": {
     "links": [
       {
