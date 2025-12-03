@@ -38,6 +38,15 @@
             ]
           },
           {
+            "group": "Omni Chat",
+            "pages": [
+              "essentials/markdown",
+              "essentials/code",
+              "essentials/images",
+              "essentials/reusable-snippets"
+            ]
+          },
+          {
             "group": "AI tools",
             "pages": [
               "ai-tools/cursor",
