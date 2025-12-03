@@ -61,7 +61,6 @@
         "groups": [
           {
             "group": "Payment API",
-            "openapi": "payment-api/openapi.json",
             "pages": [
               "payment-api/introduction",
               "payment-api/endpoint/create-payment-intent",
@@ -85,7 +84,6 @@
           },
           {
             "group": "SMS Gateway API",
-            "openapi": "sms-api/openapi.json",
             "pages": [
               "sms-api/introduction",
               "sms-api/endpoint/send-sms",
@@ -101,7 +99,6 @@
           },
           {
             "group": "Certification & Badge API",
-            "openapi": "certify-api/openapi.json",
             "pages": [
               "certify-api/introduction",
               "certify-api/endpoint/list-templates",
