@@ -2,7 +2,7 @@ const replaceMintlify = () => {
   const el = document.querySelector('a[href*="mintlify"]');
   if (el) {
     el.href = "https://hixbe.com";
-    el.innerHTML = `Copyright <strong>Hixbe</strong>`;
+    el.innerHTML = `Copyright ${new Date().getFullYear()} <strong>Hixbe</strong>`;
   }
 };
 

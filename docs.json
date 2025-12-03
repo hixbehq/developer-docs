@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "SDK Reference",
+        "tab": "FAQ & Guides",
         "groups": [
           {
             "group": "SMS",
@@ -57,10 +57,10 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Payment Gateway",
         "groups": [
           {
-            "group": "Payment API",
+            "group": "Payment Gateway",
             "pages": [
               "payment-api/introduction",
               "payment-api/endpoint/create-payment-intent",
@@ -81,9 +81,14 @@
               "payment-api/endpoint/list-event-deliveries",
               "payment-api/endpoint/get-request-trace"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "SMS Gateway",
+        "groups": [
           {
-            "group": "SMS Gateway API",
+            "group": "SMS Gateway",
             "pages": [
               "sms-api/introduction",
               "sms-api/endpoint/send-sms",
@@ -96,9 +101,14 @@
               "sms-api/endpoint/list-webhooks",
               "sms-api/endpoint/register-webhook"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Certification & Badge",
+        "groups": [
           {
-            "group": "Certification & Badge API",
+            "group": "Certification & Badge",
             "pages": [
               "certify-api/introduction",
               "certify-api/endpoint/list-templates",

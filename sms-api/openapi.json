@@ -70,7 +70,7 @@
         "properties": {
           "id": { "type": "string", "example": "msg_123" },
           "to": { "type": "string", "example": "8801XXXXXXXXX" },
-          "from": { "type": "string", "example": "DXSMS" },
+          "from": { "type": "string", "example": "HIXBE" },
           "body": { "type": "string", "example": "Your OTP is 391202" },
           "status": { "type": "string", "enum": ["queued", "sent", "delivered", "failed"] },
           "scheduled_at": { "type": "string", "format": "date-time", "nullable": true },
@@ -88,7 +88,7 @@
         "type": "object",
         "properties": {
           "id": { "type": "string", "example": "snd_001" },
-          "name": { "type": "string", "example": "DXSMS" },
+          "name": { "type": "string", "example": "HIXBE" },
           "status": { "type": "string", "enum": ["pending", "approved", "rejected"] }
         }
       },
@@ -148,8 +148,8 @@
               },
               "example": {
                 "to": "8801XXXXXXXXX",
-                "from": "DXSMS",
-                "message": "Welcome to DXSMS",
+                "from": "HIXBE",
+                "message": "Welcome to HIXBE",
                 "route": "transactional"
               }
             }
@@ -193,7 +193,7 @@
               "example": {
                 "recipients": ["8801XXXXXXXXX", "8801YYYYYYYYY"],
                 "message": "Big Sale Today!",
-                "from": "DXSMS"
+                "from": "HIXBE"
               }
             }
           }
