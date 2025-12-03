@@ -98,6 +98,25 @@
               "sms-api/endpoint/list-webhooks",
               "sms-api/endpoint/register-webhook"
             ]
+          },
+          {
+            "group": "Certification & Badge API",
+            "openapi": "certify-api/openapi.json",
+            "pages": [
+              "certify-api/introduction",
+              "certify-api/endpoint/list-templates",
+              "certify-api/endpoint/create-template",
+              "certify-api/endpoint/list-credentials",
+              "certify-api/endpoint/issue-credential",
+              "certify-api/endpoint/verify-credential",
+              "certify-api/endpoint/revoke-credential",
+              "certify-api/endpoint/list-badges",
+              "certify-api/endpoint/create-badge",
+              "certify-api/endpoint/list-programs",
+              "certify-api/endpoint/create-program",
+              "certify-api/endpoint/create-webhook",
+              "certify-api/endpoint/list-audit-logs"
+            ]
           }
         ]
       }
