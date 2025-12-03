@@ -93,12 +93,12 @@
     }
   },
   "logo": {
-    "light": "/logo/logo.png",
-    "dark": "/logo/logo.png"
+    "light": "/logo/logo.svg",
+    "dark": "/logo/logo.svg"
   },
   "fonts": {
-  "family": "Barlow"
-},
+    "family": "Barlow"
+  },
   "navbar": {
     "links": [
       {
@@ -114,23 +114,23 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "errors": {
-  "404": {
-    "redirect": false,
-    "title": "I can't be found",
-    "description": "What ever **happened** to this _page_?"
-  }
-},
+    "404": {
+      "redirect": false,
+      "title": "I can't be found",
+      "description": "What ever **happened** to this _page_?"
+    }
+  },
   "footer": {
     "socials": {
       "x": "https://x.com/hixbehq",
