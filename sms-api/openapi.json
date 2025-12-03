@@ -1,0 +1,327 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "DX SMS Gateway API",
+    "version": "2025-01-01",
+    "description": "A modern, developer-friendly SMS Gateway API supporting transactional, OTP, promotional and bulk messaging.",
+    "contact": {
+      "name": "DX SMS API Support",
+      "url": "https://developer.hixbe.com",
+      "email": "support@hixbe.com"
+    },
+    "termsOfService": "https://hixbe.com/terms",
+    "license": {
+      "name": "Commercial",
+      "url": "https://hixbe.com/license"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.hixbe.com/sms",
+      "description": "Production Server"
+    }
+  ],
+  "tags": [
+    { "name": "Messages", "description": "Send and track SMS messages" },
+    { "name": "Bulk", "description": "CSV and list-based bulk sending" },
+    { "name": "Senders", "description": "Sender IDs and registration" },
+    { "name": "Templates", "description": "Message templates and variables" },
+    { "name": "Reports", "description": "Delivery and usage reports" },
+    { "name": "Account", "description": "Balance, usage and profile" },
+    { "name": "Webhooks", "description": "Delivery report callbacks" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "APIKEY",
+        "description": "Authorization: Bearer sk_live_xxxxx"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "code": { "type": "string" },
+              "message": { "type": "string" },
+              "param": { "type": "string", "nullable": true },
+              "request_id": { "type": "string" }
+            },
+            "required": ["type", "code", "message"]
+          }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "msg_123" },
+          "to": { "type": "string", "example": "8801XXXXXXXXX" },
+          "from": { "type": "string", "example": "DXSMS" },
+          "body": { "type": "string", "example": "Your OTP is 391202" },
+          "status": { "type": "string", "enum": ["queued", "sent", "delivered", "failed"] },
+          "scheduled_at": { "type": "string", "format": "date-time", "nullable": true },
+          "created_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Balance": {
+        "type": "object",
+        "properties": {
+          "currency": { "type": "string", "example": "BDT" },
+          "balance": { "type": "number", "example": 524.25 }
+        }
+      },
+      "Sender": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "snd_001" },
+          "name": { "type": "string", "example": "DXSMS" },
+          "status": { "type": "string", "enum": ["pending", "approved", "rejected"] }
+        }
+      },
+      "Template": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "tpl_001" },
+          "name": { "type": "string" },
+          "content": { "type": "string", "example": "Your OTP is {{code}}" }
+        }
+      },
+      "Webhook": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "wh_001" },
+          "url": { "type": "string" },
+          "events": { "type": "array", "items": { "type": "string" } },
+          "enabled": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "security": [{ "bearerAuth": [] }],
+  "paths": {
+    "/messages": {
+      "post": {
+        "tags": ["Messages"],
+        "summary": "Send SMS",
+        "description": "Send a single SMS message. Supports OTP, transactional, and promotional routes.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to": { "type": "string" },
+                  "from": { "type": "string" },
+                  "message": { "type": "string" },
+                  "schedule_at": { "type": "string", "format": "date-time", "nullable": true },
+                  "route": { "type": "string", "enum": ["otp", "transactional", "promotional"], "default": "transactional" }
+                },
+                "required": ["to", "message"]
+              },
+              "example": {
+                "to": "8801XXXXXXXXX",
+                "from": "DXSMS",
+                "message": "Welcome to DXSMS",
+                "route": "transactional"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Message accepted",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Message" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/schemas/Error" }
+        }
+      }
+    },
+    "/bulk": {
+      "post": {
+        "tags": ["Bulk"],
+        "summary": "Bulk SMS",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "message": { "type": "string" },
+                  "from": { "type": "string" }
+                }
+              },
+              "example": {
+                "recipients": ["8801XXXXXXXXX", "8801YYYYYYYYY"],
+                "message": "Big Sale Today!",
+                "from": "DXSMS"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Bulk accepted",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "example": { "job_id": "job_001", "queued": 2 } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/senders": {
+      "get": {
+        "tags": ["Senders"],
+        "summary": "List Senders",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Sender" } }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Senders"],
+        "summary": "Request Sender ID",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "documents": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sender requested",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Sender" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates": {
+      "get": {
+        "tags": ["Templates"],
+        "summary": "List Templates",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Template" } }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Templates"],
+        "summary": "Create Template",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "content": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Template" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/balance": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Get Balance",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Balance" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks": {
+      "get": {
+        "tags": ["Webhooks"],
+        "summary": "List webhooks",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Webhook" } }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Webhooks"],
+        "summary": "Register webhook",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string" },
+                  "events": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Webhook" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
