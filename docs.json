@@ -17,8 +17,8 @@
             "group": "SMS",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "faq-and-guides/quickstart",
+              "faq-and-guides/development"
             ]
           },
           {
@@ -123,6 +123,17 @@
               "certify-api/endpoint/create-program",
               "certify-api/endpoint/create-webhook",
               "certify-api/endpoint/list-audit-logs"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Updates",
+            "pages": [
+              "changelog"
             ]
           }
         ]
