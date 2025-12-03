@@ -76,8 +76,8 @@
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "anchor": "Learn",
+          "href": "https://learn.hixbe.com/",
           "icon": "newspaper"
         }
       ]
