@@ -41,6 +41,118 @@
         ]
       },
       {
+        "tab": "Account Management",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "account-api/introduction"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "account-api/endpoint/get-api-structure",
+              "account-api/endpoint/get-current-user",
+              "account-api/endpoint/register-user",
+              "account-api/endpoint/login-user",
+              "account-api/endpoint/refresh-token",
+              "account-api/endpoint/logout-user",
+              "account-api/endpoint/get-active-sessions",
+              "account-api/endpoint/revoke-session",
+              "account-api/endpoint/delete-account",
+              "account-api/endpoint/cancel-account-deletion",
+              "account-api/endpoint/get-account-deletion-status"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "account-api/endpoint/get-user-organizations",
+              "account-api/endpoint/create-organization",
+              "account-api/endpoint/get-organization",
+              "account-api/endpoint/update-organization",
+              "account-api/endpoint/get-organization-members",
+              "account-api/endpoint/invite-user",
+              "account-api/endpoint/remove-user-from-organization",
+              "account-api/endpoint/assign-role-to-user",
+              "account-api/endpoint/remove-role-from-user"
+            ]
+          },
+          {
+            "group": "Roles & Permissions",
+            "pages": [
+              "account-api/endpoint/get-roles",
+              "account-api/endpoint/create-role",
+              "account-api/endpoint/get-role",
+              "account-api/endpoint/update-role",
+              "account-api/endpoint/delete-role",
+              "account-api/endpoint/assign-permission-to-role",
+              "account-api/endpoint/remove-permission-from-role",
+              "account-api/endpoint/get-permissions",
+              "account-api/endpoint/create-permission",
+              "account-api/endpoint/get-permission",
+              "account-api/endpoint/delete-permission"
+            ]
+          },
+          {
+            "group": "User Permissions",
+            "pages": [
+              "account-api/endpoint/get-user-permissions",
+              "account-api/endpoint/assign-permission",
+              "account-api/endpoint/clear-user-permissions",
+              "account-api/endpoint/get-effective-permissions",
+              "account-api/endpoint/assign-permission-by-name",
+              "account-api/endpoint/assign-multiple-permissions",
+              "account-api/endpoint/revoke-permission",
+              "account-api/endpoint/check-permission",
+              "account-api/endpoint/bulk-assign-permissions",
+              "account-api/endpoint/get-users-with-permission"
+            ]
+          },
+          {
+            "group": "Entitlements",
+            "pages": [
+              "account-api/endpoint/get-entitlements",
+              "account-api/endpoint/add-entitlement",
+              "account-api/endpoint/get-entitlement",
+              "account-api/endpoint/update-entitlement",
+              "account-api/endpoint/cancel-entitlement",
+              "account-api/endpoint/suspend-service",
+              "account-api/endpoint/reactivate-service",
+              "account-api/endpoint/reset-quota",
+              "account-api/endpoint/subscribe-to-service",
+              "account-api/endpoint/change-plan",
+              "account-api/endpoint/cancel-subscription",
+              "account-api/endpoint/check-access",
+              "account-api/endpoint/track-usage"
+            ]
+          },
+          {
+            "group": "Service Plans",
+            "pages": [
+              "account-api/endpoint/get-all-services",
+              "account-api/endpoint/get-service-plans"
+            ]
+          },
+          {
+            "group": "RBAC Examples",
+            "pages": [
+              "account-api/endpoint/get-users",
+              "account-api/endpoint/create-user-and-assign-role",
+              "account-api/endpoint/get-profile",
+              "account-api/endpoint/get-dashboard",
+              "account-api/endpoint/manage-members",
+              "account-api/endpoint/check-permission-rbac",
+              "account-api/endpoint/get-my-permissions",
+              "account-api/endpoint/get-my-roles",
+              "account-api/endpoint/update-system-config",
+              "account-api/endpoint/get-project"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Payment Gateway",
         "groups": [
           {

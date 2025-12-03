@@ -1,0 +1,3104 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "AppController_getApiStructure",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "App"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions": {
+            "get": {
+                "operationId": "UserPermissionController_getUserPermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of user permissions"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get user permissions (direct assignments only)",
+                "tags": [
+                    "User Permissions"
+                ]
+            },
+            "post": {
+                "operationId": "UserPermissionController_assignPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AssignPermissionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Permission assigned successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Assign a permission to user",
+                "tags": [
+                    "User Permissions"
+                ]
+            },
+            "delete": {
+                "operationId": "UserPermissionController_clearUserPermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All permissions cleared"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Clear all direct permissions from user",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions/effective": {
+            "get": {
+                "operationId": "UserPermissionController_getEffectivePermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of effective permissions"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get all effective permissions for user (role + direct)",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions/by-name": {
+            "post": {
+                "operationId": "UserPermissionController_assignPermissionByName",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AssignPermissionByNameDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Permission assigned successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Assign a permission by name",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions/multiple": {
+            "post": {
+                "operationId": "UserPermissionController_assignMultiplePermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AssignMultiplePermissionsDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Permissions assigned successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Assign multiple permissions to user",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions/{permissionId}": {
+            "delete": {
+                "operationId": "UserPermissionController_revokePermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Permission revoked successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Revoke a permission from user",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/users/{userId}/permissions/check/{permissionName}": {
+            "get": {
+                "operationId": "UserPermissionController_checkPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionName",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Permission check result"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Check if user has a specific permission",
+                "tags": [
+                    "User Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/permissions/bulk/assign": {
+            "post": {
+                "operationId": "BulkUserPermissionController_bulkAssignPermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BulkAssignPermissionsDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Permissions assigned successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Bulk assign permissions to multiple users",
+                "tags": [
+                    "User Permissions - Bulk Operations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/permissions/bulk/users/{permissionId}": {
+            "get": {
+                "operationId": "BulkUserPermissionController_getUsersWithPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of users with permission"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get all users with a specific permission",
+                "tags": [
+                    "User Permissions - Bulk Operations"
+                ]
+            }
+        },
+        "/auth/me": {
+            "get": {
+                "operationId": "AuthController_getCurrentUser",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Current user retrieved successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "summary": "Get current user",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/sign-up": {
+            "post": {
+                "operationId": "AuthController_register",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    },
+                    "409": {
+                        "description": "Email already exists"
+                    }
+                },
+                "summary": "Register a new user",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/sign-in": {
+            "post": {
+                "operationId": "AuthController_login",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful, refresh token set in cookie",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthResponseDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                },
+                "summary": "Login user with credentials",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/refresh": {
+            "post": {
+                "operationId": "AuthController_refreshToken",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Token refreshed, new refresh token set in cookie"
+                    },
+                    "401": {
+                        "description": "Invalid or expired refresh token"
+                    }
+                },
+                "summary": "Refresh access token using cookie",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "operationId": "AuthController_logout",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully"
+                    }
+                },
+                "summary": "Logout user",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/sessions": {
+            "get": {
+                "operationId": "AuthController_getSessions",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Sessions retrieved"
+                    }
+                },
+                "summary": "Get all active sessions",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/sessions/{sessionId}/revoke": {
+            "post": {
+                "operationId": "AuthController_revokeSession",
+                "parameters": [
+                    {
+                        "name": "sessionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session revoked"
+                    }
+                },
+                "summary": "Revoke a specific session",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/account": {
+            "delete": {
+                "operationId": "AuthController_deleteAccount",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Account scheduled for deletion. Can be cancelled within 30 days."
+                    }
+                },
+                "summary": "Schedule account deletion (30-day grace period)",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/account/cancel-deletion": {
+            "post": {
+                "operationId": "AuthController_cancelAccountDeletion",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Account deletion cancelled"
+                    }
+                },
+                "summary": "Cancel scheduled account deletion",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/auth/account/deletion-status": {
+            "get": {
+                "operationId": "AuthController_getAccountDeletionStatus",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Account deletion status retrieved"
+                    }
+                },
+                "summary": "Get account deletion status",
+                "tags": [
+                    "auth"
+                ]
+            }
+        },
+        "/organizations": {
+            "get": {
+                "operationId": "OrganizationsController_getUserOrganizations",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of organizations the user belongs to",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrganizationDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get user's organizations",
+                "tags": [
+                    "Organizations"
+                ]
+            },
+            "post": {
+                "operationId": "OrganizationsController_createOrganization",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateOrganizationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Organization created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Create a new organization",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}": {
+            "get": {
+                "operationId": "OrganizationsController_getOrganization",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization details retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get organization details",
+                "tags": [
+                    "Organizations"
+                ]
+            },
+            "patch": {
+                "operationId": "OrganizationsController_updateOrganization",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateOrganizationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Organization updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Update organization details",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/members": {
+            "get": {
+                "operationId": "OrganizationsController_getMembers",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of organization members",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrganizationMemberDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get organization members",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/members/invite": {
+            "post": {
+                "operationId": "OrganizationsController_inviteUser",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InviteUserDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User invited successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvitationDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Invite user to organization",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/members/{userId}": {
+            "delete": {
+                "operationId": "OrganizationsController_removeUser",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User removed from organization"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Remove user from organization",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/members/{userId}/roles/{roleName}": {
+            "post": {
+                "operationId": "OrganizationsController_assignRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleName",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Role assigned to user successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Assign role to organization member",
+                "tags": [
+                    "Organizations"
+                ]
+            },
+            "delete": {
+                "operationId": "OrganizationsController_removeRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleName",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Role removed from user successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Remove role from organization member",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements": {
+            "get": {
+                "operationId": "EntitlementsController_getEntitlements",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of organization entitlements",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EntitlementDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get organization entitlements",
+                "tags": [
+                    "Entitlements"
+                ]
+            },
+            "post": {
+                "operationId": "EntitlementsController_addEntitlement",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddEntitlementDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Entitlement added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntitlementDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Add entitlement to organization",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}": {
+            "get": {
+                "operationId": "EntitlementsController_getEntitlement",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Entitlement details retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntitlementDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get specific service entitlement",
+                "tags": [
+                    "Entitlements"
+                ]
+            },
+            "patch": {
+                "operationId": "EntitlementsController_updateEntitlement",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEntitlementDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Entitlement updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntitlementDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Update service entitlement",
+                "tags": [
+                    "Entitlements"
+                ]
+            },
+            "delete": {
+                "operationId": "EntitlementsController_cancelEntitlement",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Entitlement cancelled successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Cancel service entitlement",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/suspend": {
+            "post": {
+                "operationId": "EntitlementsController_suspendService",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Service suspended successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Suspend service entitlement",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/reactivate": {
+            "post": {
+                "operationId": "EntitlementsController_reactivateService",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Service reactivated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Reactivate suspended service",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/reset-quota": {
+            "post": {
+                "operationId": "EntitlementsController_resetQuota",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Quota reset successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Reset service usage quota",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/subscribe": {
+            "post": {
+                "operationId": "EntitlementsController_subscribe",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubscribeToServiceDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Subscription created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntitlementDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Subscribe to a service",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/change-plan": {
+            "patch": {
+                "operationId": "EntitlementsController_changePlan",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePlanDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plan changed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntitlementDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Change service plan",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/cancel": {
+            "post": {
+                "operationId": "EntitlementsController_cancelSubscription",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CancelSubscriptionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Subscription cancelled successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Cancel service subscription",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/{service}/access": {
+            "get": {
+                "operationId": "EntitlementsController_checkAccess",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PAYMENT_GATEWAY",
+                                "SMS_GATEWAY",
+                                "LINK_SHORTENER",
+                                "PBX_CALL_CENTER",
+                                "HOSTING",
+                                "NATIONAL_ISP",
+                                "CERTIFICATION_BADGE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Access check result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccessCheckDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Check service access entitlement",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/entitlements/track-usage": {
+            "post": {
+                "operationId": "EntitlementsController_trackUsage",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TrackUsageDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usage tracked successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Track service usage",
+                "tags": [
+                    "Entitlements"
+                ]
+            }
+        },
+        "/service-plans": {
+            "get": {
+                "operationId": "ServicePlansController_getAllServices",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "ServicePlans"
+                ]
+            }
+        },
+        "/service-plans/{service}": {
+            "get": {
+                "operationId": "ServicePlansController_getServicePlans",
+                "parameters": [
+                    {
+                        "name": "service",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "ServicePlans"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/roles": {
+            "get": {
+                "operationId": "RolesController_getRoles",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            },
+            "post": {
+                "operationId": "RolesController_createRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/roles/{roleId}": {
+            "get": {
+                "operationId": "RolesController_getRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            },
+            "patch": {
+                "operationId": "RolesController_updateRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            },
+            "delete": {
+                "operationId": "RolesController_deleteRole",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/roles/{roleId}/permissions/{permissionId}": {
+            "post": {
+                "operationId": "RolesController_assignPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            },
+            "delete": {
+                "operationId": "RolesController_removePermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Roles"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/permissions": {
+            "get": {
+                "operationId": "PermissionsController_getPermissions",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Permissions"
+                ]
+            },
+            "post": {
+                "operationId": "PermissionsController_createPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Permissions"
+                ]
+            }
+        },
+        "/organizations/{organizationId}/permissions/{permissionId}": {
+            "get": {
+                "operationId": "PermissionsController_getPermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Permissions"
+                ]
+            },
+            "delete": {
+                "operationId": "PermissionsController_deletePermission",
+                "parameters": [
+                    {
+                        "name": "organizationId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissionId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Permissions"
+                ]
+            }
+        },
+        "/rbac/users": {
+            "get": {
+                "operationId": "RbacExampleController_getUsers",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get all users (requires users.read permission)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            },
+            "post": {
+                "operationId": "RbacExampleController_createUser",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Create user and assign role (requires both permissions)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/my-profile": {
+            "get": {
+                "operationId": "RbacExampleController_getProfile",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get user profile (requires users.read_own OR users.read)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/dashboard": {
+            "get": {
+                "operationId": "RbacExampleController_getDashboard",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Admin dashboard (requires admin or manager role)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/organization/members": {
+            "post": {
+                "operationId": "RbacExampleController_manageMembers",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Manage organization members (admin role + permission)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/check-permission/{permission}": {
+            "get": {
+                "operationId": "RbacExampleController_checkPermission",
+                "parameters": [
+                    {
+                        "name": "permission",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Check if user has specific permission",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/my-permissions": {
+            "get": {
+                "operationId": "RbacExampleController_getMyPermissions",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get all permissions for current user",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/my-roles": {
+            "get": {
+                "operationId": "RbacExampleController_getMyRoles",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get all roles for current user",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/system/config": {
+            "post": {
+                "operationId": "RbacExampleController_updateSystemConfig",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "System configuration (super admin only)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        },
+        "/rbac/projects/{id}": {
+            "get": {
+                "operationId": "RbacExampleController_getProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ],
+                "summary": "Get project (with granular permission checks)",
+                "tags": [
+                    "RBAC Examples"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Hixbe Account API",
+        "description": "Complete account management, authentication, and RBAC system for Hixbe services",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Hixbe Support",
+            "email": "support@hixbe.com",
+            "url": "https://hixbe.com/support"
+        }
+    },
+    "tags": [
+        {
+            "name": "App",
+            "description": "Application information and structure"
+        },
+        {
+            "name": "User Permissions",
+            "description": "Direct user permission management"
+        },
+        {
+            "name": "User Permissions - Bulk Operations",
+            "description": "Bulk permission operations for multiple users"
+        },
+        {
+            "name": "auth",
+            "description": "User authentication and session management"
+        },
+        {
+            "name": "Organizations",
+            "description": "Organization management and member administration"
+        },
+        {
+            "name": "Entitlements",
+            "description": "Service subscriptions and usage management"
+        },
+        {
+            "name": "ServicePlans",
+            "description": "Available service plans and pricing"
+        },
+        {
+            "name": "Roles",
+            "description": "Role-based access control management"
+        },
+        {
+            "name": "Permissions",
+            "description": "Permission definition and management"
+        },
+        {
+            "name": "RBAC Examples",
+            "description": "Example endpoints demonstrating RBAC usage"
+        }
+    ],
+    "servers": [
+        {
+            "url": "https://api.hixbe.com/account",
+            "description": "Production server"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "type": "http"
+            }
+        },
+        "schemas": {
+            "AssignPermissionDto": {
+                "type": "object",
+                "properties": {
+                    "permissionId": {
+                        "type": "string",
+                        "description": "Permission ID to assign",
+                        "example": "clxxx123"
+                    },
+                    "grant": {
+                        "type": "boolean",
+                        "description": "Grant permission (true) or deny/revoke (false)",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "permissionId",
+                    "grant"
+                ]
+            },
+            "AssignPermissionByNameDto": {
+                "type": "object",
+                "properties": {
+                    "permissionName": {
+                        "type": "string",
+                        "description": "Permission name to assign",
+                        "example": "users.create"
+                    },
+                    "grant": {
+                        "type": "boolean",
+                        "description": "Grant permission (true) or deny/revoke (false)",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "permissionName",
+                    "grant"
+                ]
+            },
+            "AssignMultiplePermissionsDto": {
+                "type": "object",
+                "properties": {
+                    "permissionIds": {
+                        "description": "Array of permission IDs to assign",
+                        "example": [
+                            "clxxx123",
+                            "clxxx456"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "grant": {
+                        "type": "boolean",
+                        "description": "Grant permissions (true) or deny/revoke (false)",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "permissionIds",
+                    "grant"
+                ]
+            },
+            "BulkAssignPermissionsDto": {
+                "type": "object",
+                "properties": {
+                    "userIds": {
+                        "description": "Array of user IDs",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "permissionIds": {
+                        "description": "Array of permission IDs to assign",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "grant": {
+                        "type": "boolean",
+                        "description": "Grant permissions (true) or deny/revoke (false)",
+                        "default": true
+                    }
+                },
+                "required": [
+                    "userIds",
+                    "permissionIds",
+                    "grant"
+                ]
+            },
+            "RegisterDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "user@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "StrongPass123!"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "Doe"
+                    }
+                },
+                "required": [
+                    "email",
+                    "password",
+                    "firstName",
+                    "lastName"
+                ]
+            },
+            "LoginDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "user@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "StrongPass123!"
+                    }
+                },
+                "required": [
+                    "email",
+                    "password"
+                ]
+            },
+            "AuthResponseDto": {
+                "type": "object",
+                "properties": {
+                    "accessToken": {
+                        "type": "string",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                    },
+                    "refreshToken": {
+                        "type": "string",
+                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                    }
+                },
+                "required": [
+                    "accessToken",
+                    "refreshToken"
+                ]
+            },
+            "SubscribeToServiceDto": {
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "string",
+                        "enum": [
+                            "PAYMENT_GATEWAY",
+                            "SMS_GATEWAY",
+                            "LINK_SHORTENER",
+                            "PBX_CALL_CENTER",
+                            "HOSTING",
+                            "NATIONAL_ISP",
+                            "CERTIFICATION_BADGE"
+                        ],
+                        "description": "The service to subscribe to"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "The plan tier to subscribe to"
+                    },
+                    "trialDays": {
+                        "type": "number",
+                        "description": "Number of trial days (optional)",
+                        "example": 14
+                    }
+                },
+                "required": [
+                    "service",
+                    "tier"
+                ]
+            },
+            "ChangePlanDto": {
+                "type": "object",
+                "properties": {
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "The new plan tier"
+                    }
+                },
+                "required": [
+                    "tier"
+                ]
+            },
+            "CancelSubscriptionDto": {
+                "type": "object",
+                "properties": {
+                    "immediate": {
+                        "type": "boolean",
+                        "description": "Cancel immediately instead of at end of billing period",
+                        "default": false
+                    }
+                }
+            },
+            "TrackUsageDto": {
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "string",
+                        "enum": [
+                            "PAYMENT_GATEWAY",
+                            "SMS_GATEWAY",
+                            "LINK_SHORTENER",
+                            "PBX_CALL_CENTER",
+                            "HOSTING",
+                            "NATIONAL_ISP",
+                            "CERTIFICATION_BADGE"
+                        ],
+                        "description": "The service to track usage for"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Amount to increment usage by",
+                        "default": 1
+                    }
+                },
+                "required": [
+                    "service"
+                ]
+            },
+            "OrganizationDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Organization unique identifier"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Organization description"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Organization creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Organization last update timestamp"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "OrganizationMemberDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "User unique identifier"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User email address"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "User first name"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "User last name"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RoleDto"
+                        },
+                        "description": "User's roles in the organization"
+                    },
+                    "joinedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When user joined the organization"
+                    }
+                },
+                "required": [
+                    "id",
+                    "email",
+                    "firstName",
+                    "lastName"
+                ]
+            },
+            "RoleDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Role unique identifier"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Role name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Role description"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PermissionDto"
+                        },
+                        "description": "Permissions assigned to this role"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "PermissionDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Permission unique identifier"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Permission name (e.g., users.create)"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Permission description"
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "Resource this permission applies to"
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "Action allowed by this permission"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "EntitlementDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Entitlement unique identifier"
+                    },
+                    "service": {
+                        "type": "string",
+                        "enum": [
+                            "PAYMENT_GATEWAY",
+                            "SMS_GATEWAY",
+                            "LINK_SHORTENER",
+                            "PBX_CALL_CENTER",
+                            "HOSTING",
+                            "NATIONAL_ISP",
+                            "CERTIFICATION_BADGE"
+                        ],
+                        "description": "Service this entitlement is for"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "Subscription tier"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "SUSPENDED",
+                            "CANCELLED",
+                            "EXPIRED"
+                        ],
+                        "description": "Entitlement status"
+                    },
+                    "usage": {
+                        "type": "object",
+                        "properties": {
+                            "current": {
+                                "type": "number",
+                                "description": "Current usage count"
+                            },
+                            "limit": {
+                                "type": "number",
+                                "description": "Usage limit for this tier"
+                            }
+                        },
+                        "description": "Usage tracking information"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Entitlement creation timestamp"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Entitlement last update timestamp"
+                    }
+                },
+                "required": [
+                    "id",
+                    "service",
+                    "tier",
+                    "status"
+                ]
+            },
+            "CreateOrganizationDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name",
+                        "minLength": 1,
+                        "maxLength": 100
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Organization description",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "UpdateOrganizationDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Organization name",
+                        "minLength": 1,
+                        "maxLength": 100
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Organization description",
+                        "maxLength": 500
+                    }
+                }
+            },
+            "InviteUserDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email address of user to invite"
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "description": "Role to assign to the invited user",
+                        "default": "member"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Optional invitation message",
+                        "maxLength": 500
+                    }
+                },
+                "required": [
+                    "email"
+                ]
+            },
+            "InvitationDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Invitation unique identifier"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Invited user's email"
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "description": "Assigned role name"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "PENDING",
+                            "ACCEPTED",
+                            "EXPIRED",
+                            "CANCELLED"
+                        ],
+                        "description": "Invitation status"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Invitation expiration timestamp"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Invitation creation timestamp"
+                    }
+                },
+                "required": [
+                    "id",
+                    "email",
+                    "status"
+                ]
+            },
+            "AddEntitlementDto": {
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "string",
+                        "enum": [
+                            "PAYMENT_GATEWAY",
+                            "SMS_GATEWAY",
+                            "LINK_SHORTENER",
+                            "PBX_CALL_CENTER",
+                            "HOSTING",
+                            "NATIONAL_ISP",
+                            "CERTIFICATION_BADGE"
+                        ],
+                        "description": "Service to add entitlement for"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "Subscription tier"
+                    },
+                    "customLimits": {
+                        "type": "object",
+                        "description": "Custom limits for CUSTOM tier",
+                        "properties": {
+                            "requestsPerMonth": {
+                                "type": "number",
+                                "description": "Monthly request limit"
+                            },
+                            "storageGB": {
+                                "type": "number",
+                                "description": "Storage limit in GB"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "service",
+                    "tier"
+                ]
+            },
+            "UpdateEntitlementDto": {
+                "type": "object",
+                "properties": {
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "New subscription tier"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "SUSPENDED"
+                        ],
+                        "description": "Entitlement status"
+                    }
+                }
+            },
+            "AccessCheckDto": {
+                "type": "object",
+                "properties": {
+                    "hasAccess": {
+                        "type": "boolean",
+                        "description": "Whether the organization has access to the service"
+                    },
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "Current subscription tier"
+                    },
+                    "usage": {
+                        "type": "object",
+                        "properties": {
+                            "current": {
+                                "type": "number",
+                                "description": "Current usage"
+                            },
+                            "limit": {
+                                "type": "number",
+                                "description": "Usage limit"
+                            },
+                            "percentage": {
+                                "type": "number",
+                                "description": "Usage percentage (0-100)"
+                            }
+                        },
+                        "description": "Current usage information"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Available features for this tier"
+                    }
+                },
+                "required": [
+                    "hasAccess"
+                ]
+            },
+            "CreateRoleDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Role name (must be unique within organization)",
+                        "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                        "minLength": 2,
+                        "maxLength": 50
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Role description",
+                        "maxLength": 200
+                    },
+                    "permissionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Initial permissions to assign to this role"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "UpdateRoleDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Role name",
+                        "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                        "minLength": 2,
+                        "maxLength": 50
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Role description",
+                        "maxLength": 200
+                    }
+                }
+            },
+            "CreatePermissionDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Permission name (e.g., users.create)",
+                        "pattern": "^[a-z][a-zA-Z0-9._-]*$",
+                        "minLength": 3,
+                        "maxLength": 100
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Permission description",
+                        "maxLength": 200
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "Resource this permission applies to (e.g., users, payments)",
+                        "minLength": 1,
+                        "maxLength": 50
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "Action allowed (e.g., create, read, update, delete)",
+                        "enum": [
+                            "create",
+                            "read",
+                            "update",
+                            "delete",
+                            "manage",
+                            "execute"
+                        ]
+                    }
+                },
+                "required": [
+                    "name",
+                    "resource",
+                    "action"
+                ]
+            },
+            "ServicePlanDto": {
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "string",
+                        "enum": [
+                            "PAYMENT_GATEWAY",
+                            "SMS_GATEWAY",
+                            "LINK_SHORTENER",
+                            "PBX_CALL_CENTER",
+                            "HOSTING",
+                            "NATIONAL_ISP",
+                            "CERTIFICATION_BADGE"
+                        ],
+                        "description": "Service name"
+                    },
+                    "plans": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PlanDto"
+                        },
+                        "description": "Available plans for this service"
+                    }
+                },
+                "required": [
+                    "service",
+                    "plans"
+                ]
+            },
+            "PlanDto": {
+                "type": "object",
+                "properties": {
+                    "tier": {
+                        "type": "string",
+                        "enum": [
+                            "FREE",
+                            "PRO",
+                            "BUSINESS",
+                            "CUSTOM"
+                        ],
+                        "description": "Plan tier"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Plan description"
+                    },
+                    "price": {
+                        "type": "object",
+                        "properties": {
+                            "amount": {
+                                "type": "number",
+                                "description": "Price amount"
+                            },
+                            "currency": {
+                                "type": "string",
+                                "description": "Currency code",
+                                "default": "USD"
+                            },
+                            "interval": {
+                                "type": "string",
+                                "enum": [
+                                    "month",
+                                    "year"
+                                ],
+                                "description": "Billing interval"
+                            }
+                        },
+                        "description": "Pricing information"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Plan features"
+                    },
+                    "limits": {
+                        "type": "object",
+                        "description": "Usage limits",
+                        "properties": {
+                            "requestsPerMonth": {
+                                "type": "number",
+                                "description": "Monthly request limit"
+                            },
+                            "storageGB": {
+                                "type": "number",
+                                "description": "Storage limit in GB"
+                            },
+                            "users": {
+                                "type": "number",
+                                "description": "User limit"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "tier",
+                    "name"
+                ]
+            }
+        }
+    }
+}

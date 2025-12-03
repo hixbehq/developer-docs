@@ -1,0 +1,370 @@
+---
+title: Hixbe Account API
+description: Complete account management, authentication, and role-based access control system
+---
+
+# Hixbe Account API
+
+The Hixbe Account API is a comprehensive identity and access management platform that provides secure user authentication, multi-tenant organization management, granular role-based access control (RBAC), and service entitlement tracking. It serves as the central hub for managing users, permissions, and access across all Hixbe services.
+
+## 🚀 Key Features
+
+- **Secure Authentication**: JWT-based authentication with automatic token refresh
+- **Multi-Tenant Organizations**: Complete organization management with member administration
+- **Granular RBAC**: Flexible permission system with roles and direct assignments
+- **Service Entitlements**: Subscription management and usage tracking for all Hixbe services
+- **Audit & Compliance**: Comprehensive logging and compliance reporting
+- **Developer-Friendly**: RESTful API with OpenAPI 3.0 specification
+
+## 🔐 Authentication
+
+The Account API uses industry-standard JWT authentication with secure token management.
+
+### Authentication Headers
+
+```bash
+Authorization: Bearer <access_token>
+Hixbe-Version: 2026-01-01
+```
+
+### Token Lifecycle
+
+- **Access Tokens**: Expire after 15 minutes for security
+- **Refresh Tokens**: Stored in HTTP-only cookies, valid for 30 days
+- **Automatic Refresh**: API calls automatically refresh tokens when needed
+
+### Quick Start Authentication
+
+```javascript
+// 1. Register a new user
+const registerResponse = await fetch('https://api.hixbe.com/account/auth/sign-up', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    email: 'user@example.com',
+    password: 'StrongPass123!',
+    firstName: 'John',
+    lastName: 'Doe'
+  })
+});
+
+// 2. Login to get tokens
+const loginResponse = await fetch('https://api.hixbe.com/account/auth/sign-in', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    email: 'user@example.com',
+    password: 'StrongPass123!'
+  })
+});
+
+// 3. Use access token for authenticated requests
+const userResponse = await fetch('https://api.hixbe.com/account/auth/me', {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Hixbe-Version': '2026-01-01'
+  }
+});
+```
+
+## 🏢 Organization Management
+
+Organizations are the top-level entities that contain users, roles, permissions, and service entitlements.
+
+### Creating and Managing Organizations
+
+```javascript
+// Create a new organization
+const orgResponse = await fetch('https://api.hixbe.com/account/organizations', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'Acme Corporation',
+    description: 'Leading technology solutions provider'
+  })
+});
+
+// Invite team members
+const inviteResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/members/invite`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'team.member@acme.com',
+    roleName: 'developer'
+  })
+});
+```
+
+## 🔒 Role-Based Access Control (RBAC)
+
+The Account API implements a sophisticated RBAC system with granular permissions and flexible assignment options.
+
+### Permission Structure
+
+Permissions follow a consistent naming convention: `resource.action`
+
+```javascript
+// Examples of permission names
+'users.create'      // Create new users
+'users.read'        // View user information
+'payments.process'  // Process payment transactions
+'organizations.manage' // Manage organization settings
+```
+
+### Role Management
+
+```javascript
+// Create a custom role
+const roleResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/roles`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'project-manager',
+    description: 'Manages projects and team members',
+    permissionIds: ['users.read', 'projects.manage', 'reports.view']
+  })
+});
+
+// Assign role to user
+const assignResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/members/${userId}/roles/project-manager`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+});
+```
+
+### Direct Permission Assignment
+
+```javascript
+// Grant specific permission directly to user
+const permissionResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/users/${userId}/permissions`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    permissionId: 'special-access',
+    grant: true
+  })
+});
+
+// Check user permissions
+const checkResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/users/${userId}/permissions/check/payments.process`, {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+});
+```
+
+## 📊 Service Entitlements
+
+Track and manage subscriptions to Hixbe's various services with usage monitoring and quota management.
+
+### Available Services
+
+- **PAYMENT_GATEWAY**: Process online payments
+- **SMS_GATEWAY**: Send SMS messages
+- **LINK_SHORTENER**: Create and manage short links
+- **PBX_CALL_CENTER**: VoIP calling solutions
+- **HOSTING**: Web hosting services
+- **NATIONAL_ISP**: Internet service provision
+- **CERTIFICATION_BADGE**: Digital credential management
+
+### Subscription Management
+
+```javascript
+// Subscribe to a service
+const subscribeResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/entitlements/subscribe`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    service: 'PAYMENT_GATEWAY',
+    tier: 'PRO',
+    trialDays: 14
+  })
+});
+
+// Check service access
+const accessResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/entitlements/PAYMENT_GATEWAY/access`, {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+});
+
+// Track usage
+const usageResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/entitlements/track-usage`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    service: 'SMS_GATEWAY',
+    amount: 1
+  })
+});
+```
+
+## 📈 API Endpoints Overview
+
+The Account API is organized into several functional areas:
+
+### Authentication Endpoints
+- User registration and login
+- Token refresh and session management
+- Account deletion and recovery
+
+### Organization Endpoints
+- Organization CRUD operations
+- Member management and invitations
+- Role assignments within organizations
+
+### Permission System Endpoints
+- Role and permission management
+- Direct user permission assignments
+- Permission checking and validation
+
+### Entitlement Endpoints
+- Service subscription management
+- Usage tracking and quota monitoring
+- Plan changes and cancellations
+
+### RBAC Examples
+- Practical examples of permission checking
+- User and role management workflows
+- System configuration with proper authorization
+
+## ⚡ Rate Limits & Performance
+
+- **Authenticated Requests**: 1000 requests per minute per user
+- **Unauthenticated Requests**: 100 requests per hour per IP
+- **Bulk Operations**: 50 items per request maximum
+- **File Uploads**: 10MB maximum file size
+
+Rate limit headers are included in all responses:
+
+```bash
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 999
+X-RateLimit-Reset: 1638360000
+```
+
+## 🔧 Error Handling
+
+All API errors follow a consistent JSON structure:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "PERMISSION_DENIED",
+    "message": "Insufficient permissions to perform this action",
+    "details": {
+      "requiredPermission": "users.create",
+      "userId": "user_123",
+      "organizationId": "org_456"
+    }
+  },
+  "timestamp": "2025-12-03T10:30:00Z",
+  "requestId": "req_789"
+}
+```
+
+### Common Error Codes
+
+- `UNAUTHORIZED`: Missing or invalid authentication
+- `FORBIDDEN`: Insufficient permissions
+- `NOT_FOUND`: Resource not found
+- `VALIDATION_ERROR`: Invalid request data
+- `RATE_LIMITED`: Too many requests
+- `SERVICE_UNAVAILABLE`: Temporary service issues
+
+## 🌐 Webhooks & Events
+
+The Account API supports webhooks for real-time notifications:
+
+```javascript
+// Register a webhook
+const webhookResponse = await fetch(`https://api.hixbe.com/account/organizations/${orgId}/webhooks`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: 'https://your-app.com/webhooks/account-events',
+    events: ['user.created', 'permission.assigned', 'entitlement.updated']
+  })
+});
+```
+
+### Supported Events
+
+- `user.created`, `user.updated`, `user.deleted`
+- `organization.created`, `organization.updated`
+- `role.assigned`, `role.removed`
+- `permission.granted`, `permission.revoked`
+- `entitlement.activated`, `entitlement.suspended`
+
+## 🛡️ Security Best Practices
+
+- **Token Storage**: Never store tokens in localStorage; use secure HTTP-only cookies
+- **Password Requirements**: Minimum 8 characters with mixed case, numbers, and symbols
+- **API Keys**: Rotate regularly and use appropriate scopes
+- **HTTPS Only**: All API calls must use HTTPS
+- **Input Validation**: Always validate and sanitize user inputs
+- **Audit Logging**: Monitor and log all sensitive operations
+
+## 📚 Getting Started
+
+<CardGroup cols={2}>
+<Card title="Quickstart Guide" icon="rocket" href="/faq-guides/quickstart">
+Step-by-step setup and first API calls
+</Card>
+
+<Card title="Authentication Guide" icon="key" href="/faq-guides/authentication">
+Complete authentication and security guide
+</Card>
+
+<Card title="Best Practices" icon="check-circle" href="/faq-guides/best-practices">
+Security, performance, and integration tips
+</Card>
+
+<Card title="API Reference" icon="book" href="/account-api/endpoint/get-api-structure">
+Complete endpoint documentation
+</Card>
+
+<Card title="Support" icon="life-ring" href="mailto:support@hixbe.com">
+Get help from our support team
+</Card>
+
+<Card title="OpenAPI Spec" icon="file-code" href="/account-api/openapi.json">
+Download the complete API specification
+</Card>
+</CardGroup>
+
+## 📞 Support & Resources
+
+- **Documentation**: Comprehensive guides and API reference
+- **Community**: Join our developer community for discussions
+- **Support**: Email support@hixbe.com for technical assistance
+- **Status Page**: Check service status at status.hixbe.com
+- **Changelog**: Stay updated with API changes and new features
+
+---
+
+*Ready to build secure, scalable applications with Hixbe's Account API? Start with our [Quickstart Guide](/faq-guides/quickstart) and create your first organization today.*
