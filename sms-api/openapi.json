@@ -1,11 +1,11 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "DX SMS Gateway API",
-    "version": "2025-01-01",
+    "title": "Hixbe SMS Gateway API",
+    "version": "2026-01-01",
     "description": "A modern, developer-friendly SMS Gateway API supporting transactional, OTP, promotional and bulk messaging.",
     "contact": {
-      "name": "DX SMS API Support",
+      "name": "Hixbe Developer Support",
       "url": "https://developer.hixbe.com",
       "email": "support@hixbe.com"
     },
@@ -37,6 +37,15 @@
         "scheme": "bearer",
         "bearerFormat": "APIKEY",
         "description": "Authorization: Bearer sk_live_xxxxx"
+      }
+    },
+    "parameters": {
+      "Hixbe-Version": {
+        "name": "Hixbe-Version",
+        "in": "header",
+        "description": "API version header. Use '2026-01-01' for the latest version.",
+        "required": true,
+        "schema": { "type": "string", "default": "2026-01-01" }
       }
     },
     "schemas": {
@@ -100,6 +109,16 @@
           "enabled": { "type": "boolean" }
         }
       }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Authentication failed",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      },
+      "GenericError": {
+        "description": "Standard error response",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+      }
     }
   },
   "security": [{ "bearerAuth": [] }],
@@ -108,7 +127,10 @@
       "post": {
         "tags": ["Messages"],
         "summary": "Send SMS",
-        "description": "Send a single SMS message. Supports OTP, transactional, and promotional routes.",
+        "operationId": "sendSMS",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -142,14 +164,18 @@
               }
             }
           },
-          "400": { "$ref": "#/components/schemas/Error" }
+          "400": { "$ref": "#/components/schemas/Error" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     },
     "/bulk": {
       "post": {
         "tags": ["Bulk"],
-        "summary": "Bulk SMS",
+        "operationId": "sendBulkSMS",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -180,14 +206,18 @@
                 "schema": { "type": "object", "example": { "job_id": "job_001", "queued": 2 } }
               }
             }
-          }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     },
     "/senders": {
       "get": {
         "tags": ["Senders"],
-        "summary": "List Senders",
+        "operationId": "listSenders",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -195,13 +225,18 @@
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Sender" } }
               }
             }
-          }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       },
       "post": {
         "tags": ["Senders"],
-        "summary": "Request Sender ID",
+        "operationId": "requestSenderID",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -209,7 +244,8 @@
                 "properties": {
                   "name": { "type": "string" },
                   "documents": { "type": "array", "items": { "type": "string" } }
-                }
+                },
+                "required": ["name"]
               }
             }
           }
@@ -222,14 +258,19 @@
                 "schema": { "$ref": "#/components/schemas/Sender" }
               }
             }
-          }
+          },
+          "400": { "$ref": "#/components/schemas/Error" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     },
     "/templates": {
       "get": {
         "tags": ["Templates"],
-        "summary": "List Templates",
+        "operationId": "listTemplates",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -237,13 +278,18 @@
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Template" } }
               }
             }
-          }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       },
       "post": {
         "tags": ["Templates"],
-        "summary": "Create Template",
+        "operationId": "createTemplate",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -251,7 +297,8 @@
                 "properties": {
                   "name": { "type": "string" },
                   "content": { "type": "string" }
-                }
+                },
+                "required": ["name", "content"]
               }
             }
           }
@@ -263,14 +310,19 @@
                 "schema": { "$ref": "#/components/schemas/Template" }
               }
             }
-          }
+          },
+          "400": { "$ref": "#/components/schemas/Error" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     },
     "/account/balance": {
       "get": {
         "tags": ["Account"],
-        "summary": "Get Balance",
+        "operationId": "getBalance",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -278,14 +330,18 @@
                 "schema": { "$ref": "#/components/schemas/Balance" }
               }
             }
-          }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     },
     "/webhooks": {
       "get": {
         "tags": ["Webhooks"],
-        "summary": "List webhooks",
+        "operationId": "listWebhooks",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -293,13 +349,18 @@
                 "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Webhook" } }
               }
             }
-          }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       },
       "post": {
         "tags": ["Webhooks"],
-        "summary": "Register webhook",
+        "operationId": "registerWebhook",
+        "parameters": [
+          { "$ref": "#/components/parameters/Hixbe-Version" }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -307,7 +368,8 @@
                 "properties": {
                   "url": { "type": "string" },
                   "events": { "type": "array", "items": { "type": "string" } }
-                }
+                },
+                "required": ["url", "events"]
               }
             }
           }
@@ -319,7 +381,9 @@
                 "schema": { "$ref": "#/components/schemas/Webhook" }
               }
             }
-          }
+          },
+          "400": { "$ref": "#/components/schemas/Error" },
+          "401": { "$ref": "#/components/responses/Unauthorized" }
         }
       }
     }

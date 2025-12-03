@@ -60,13 +60,8 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
             "group": "Payment API",
+            "openapi": "payment-api/openapi.json",
             "pages": [
               "payment-api/introduction",
               "payment-api/endpoint/create-payment-intent",
@@ -86,6 +81,22 @@
               "payment-api/endpoint/list-webhook-endpoints",
               "payment-api/endpoint/list-event-deliveries",
               "payment-api/endpoint/get-request-trace"
+            ]
+          },
+          {
+            "group": "SMS Gateway API",
+            "openapi": "sms-api/openapi.json",
+            "pages": [
+              "sms-api/introduction",
+              "sms-api/endpoint/send-sms",
+              "sms-api/endpoint/send-bulk-sms",
+              "sms-api/endpoint/list-senders",
+              "sms-api/endpoint/request-sender-id",
+              "sms-api/endpoint/list-templates",
+              "sms-api/endpoint/create-template",
+              "sms-api/endpoint/get-balance",
+              "sms-api/endpoint/list-webhooks",
+              "sms-api/endpoint/register-webhook"
             ]
           }
         ]
