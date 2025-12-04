@@ -371,6 +371,11 @@
       "description": "What ever **happened** to this _page_?"
     }
   },
+  "integrations": {
+    "gtm": {
+      "tagId": "GTM-NSSGLJ96"
+    }
+  },
   "footer": {
     "socials": {
       "x": "https://x.com/hixbehq",
