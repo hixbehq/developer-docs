@@ -156,25 +156,55 @@
         "tab": "Payment Gateway",
         "groups": [
           {
-            "group": "Payment Gateway",
+            "group": "Overview",
             "pages": [
-              "payment-api/introduction",
+              "payment-api/introduction"
+            ]
+          },
+          {
+            "group": "Payment Intents",
+            "pages": [
               "payment-api/endpoint/create-payment-intent",
               "payment-api/endpoint/list-payment-intents",
               "payment-api/endpoint/retrieve-payment-intent",
               "payment-api/endpoint/attach-payment-method-to-intent",
-              "payment-api/endpoint/confirm-payment-intent",
+              "payment-api/endpoint/confirm-payment-intent"
+            ]
+          },
+          {
+            "group": "Payment Methods",
+            "pages": [
               "payment-api/endpoint/create-payment-method",
-              "payment-api/endpoint/retrieve-payment-method",
+              "payment-api/endpoint/retrieve-payment-method"
+            ]
+          },
+          {
+            "group": "Customers",
+            "pages": [
               "payment-api/endpoint/create-customer",
               "payment-api/endpoint/list-customers",
               "payment-api/endpoint/retrieve-customer",
-              "payment-api/endpoint/attach-payment-method-to-customer",
+              "payment-api/endpoint/attach-payment-method-to-customer"
+            ]
+          },
+          {
+            "group": "Refunds",
+            "pages": [
               "payment-api/endpoint/create-refund",
-              "payment-api/endpoint/retrieve-refund",
+              "payment-api/endpoint/retrieve-refund"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
               "payment-api/endpoint/create-webhook-endpoint",
               "payment-api/endpoint/list-webhook-endpoints",
-              "payment-api/endpoint/list-event-deliveries",
+              "payment-api/endpoint/list-event-deliveries"
+            ]
+          },
+          {
+            "group": "Utilities",
+            "pages": [
               "payment-api/endpoint/get-request-trace"
             ]
           }
@@ -184,16 +214,41 @@
         "tab": "SMS Gateway",
         "groups": [
           {
-            "group": "SMS Gateway",
+            "group": "Overview",
             "pages": [
-              "sms-api/introduction",
+              "sms-api/introduction"
+            ]
+          },
+          {
+            "group": "SMS Operations",
+            "pages": [
               "sms-api/endpoint/send-sms",
-              "sms-api/endpoint/send-bulk-sms",
+              "sms-api/endpoint/send-bulk-sms"
+            ]
+          },
+          {
+            "group": "Senders",
+            "pages": [
               "sms-api/endpoint/list-senders",
-              "sms-api/endpoint/request-sender-id",
+              "sms-api/endpoint/request-sender-id"
+            ]
+          },
+          {
+            "group": "Templates",
+            "pages": [
               "sms-api/endpoint/list-templates",
-              "sms-api/endpoint/create-template",
-              "sms-api/endpoint/get-balance",
+              "sms-api/endpoint/create-template"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "sms-api/endpoint/get-balance"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
               "sms-api/endpoint/list-webhooks",
               "sms-api/endpoint/register-webhook"
             ]
@@ -204,20 +259,50 @@
         "tab": "Certification & Badge",
         "groups": [
           {
-            "group": "Certification & Badge",
+            "group": "Overview",
             "pages": [
-              "certify-api/introduction",
+              "certify-api/introduction"
+            ]
+          },
+          {
+            "group": "Templates",
+            "pages": [
               "certify-api/endpoint/list-templates",
-              "certify-api/endpoint/create-template",
+              "certify-api/endpoint/create-template"
+            ]
+          },
+          {
+            "group": "Credentials",
+            "pages": [
               "certify-api/endpoint/list-credentials",
               "certify-api/endpoint/issue-credential",
               "certify-api/endpoint/verify-credential",
-              "certify-api/endpoint/revoke-credential",
+              "certify-api/endpoint/revoke-credential"
+            ]
+          },
+          {
+            "group": "Badges",
+            "pages": [
               "certify-api/endpoint/list-badges",
-              "certify-api/endpoint/create-badge",
+              "certify-api/endpoint/create-badge"
+            ]
+          },
+          {
+            "group": "Programs",
+            "pages": [
               "certify-api/endpoint/list-programs",
-              "certify-api/endpoint/create-program",
-              "certify-api/endpoint/create-webhook",
+              "certify-api/endpoint/create-program"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "certify-api/endpoint/create-webhook"
+            ]
+          },
+          {
+            "group": "Audit",
+            "pages": [
               "certify-api/endpoint/list-audit-logs"
             ]
           }
