@@ -35,7 +35,8 @@
             "pages": [
               "faq-guides/payment-api-faq",
               "faq-guides/sms-api-faq",
-              "faq-guides/certification-api-faq"
+              "faq-guides/certification-api-faq",
+              "faq-guides/time-synchronization"
             ]
           }
         ]
@@ -304,6 +305,18 @@
             "group": "Audit",
             "pages": [
               "certify-api/endpoint/list-audit-logs"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "More",
+        "groups": [
+          {
+            "group": "Services",
+            "pages": [
+              "more/ntp-servers",
+              "more/speed-test"
             ]
           }
         ]
