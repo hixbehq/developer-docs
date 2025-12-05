@@ -36,7 +36,9 @@
               "faq-guides/payment-api-faq",
               "faq-guides/sms-api-faq",
               "faq-guides/certification-api-faq",
-              "faq-guides/time-synchronization"
+              "faq-guides/time-synchronization",
+              "faq-guides/dns-security",
+              "faq-guides/content-filtering"
             ]
           }
         ]
@@ -316,7 +318,8 @@
             "group": "Services",
             "pages": [
               "more/ntp-servers",
-              "more/speed-test"
+              "more/speed-test",
+              "more/dns-service"
             ]
           }
         ]
