@@ -226,7 +226,10 @@
             "group": "SMS Operations",
             "pages": [
               "sms-api/endpoint/send-sms",
-              "sms-api/endpoint/send-bulk-sms"
+              "sms-api/endpoint/send-bulk-sms",
+              "sms-api/endpoint/get-bulk-job",
+              "sms-api/endpoint/list-messages",
+              "sms-api/endpoint/get-message"
             ]
           },
           {
@@ -240,20 +243,25 @@
             "group": "Templates",
             "pages": [
               "sms-api/endpoint/list-templates",
-              "sms-api/endpoint/create-template"
+              "sms-api/endpoint/create-template",
+              "sms-api/endpoint/send-template"
             ]
           },
           {
             "group": "Account",
             "pages": [
-              "sms-api/endpoint/get-balance"
+              "sms-api/endpoint/get-balance",
+              "sms-api/endpoint/get-usage-report"
             ]
           },
           {
             "group": "Webhooks",
             "pages": [
               "sms-api/endpoint/list-webhooks",
-              "sms-api/endpoint/register-webhook"
+              "sms-api/endpoint/register-webhook",
+              "sms-api/endpoint/get-webhook",
+              "sms-api/endpoint/update-webhook",
+              "sms-api/endpoint/delete-webhook"
             ]
           }
         ]
@@ -307,6 +315,33 @@
             "group": "Audit",
             "pages": [
               "certify-api/endpoint/list-audit-logs"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Fiber API",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "fiber-api/introduction"
+            ]
+          },
+          {
+            "group": "Consumer Endpoints",
+            "pages": [
+              "fiber-api/endpoint/get-consumer-network",
+              "fiber-api/endpoint/get-consumer-account",
+              "fiber-api/endpoint/get-consumer-usage",
+              "fiber-api/endpoint/get-speedtest-config"
+            ]
+          },
+          {
+            "group": "Business Endpoints",
+            "pages": [
+              "fiber-api/endpoint/list-business-ip-assignments",
+              "fiber-api/endpoint/get-business-bandwidth-usage"
             ]
           }
         ]
