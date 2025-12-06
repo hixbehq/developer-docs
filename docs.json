@@ -323,13 +323,13 @@
         "tab": "Fiber API",
         "groups": [
           {
-            "group": "Overview",
+            "group": "Fiber API",
             "pages": [
               "fiber-api/introduction"
             ]
           },
           {
-            "group": "Consumer Endpoints",
+            "group": "Consumer",
             "pages": [
               "fiber-api/endpoint/get-consumer-network",
               "fiber-api/endpoint/get-consumer-account",
@@ -338,10 +338,33 @@
             ]
           },
           {
-            "group": "Business Endpoints",
+            "group": "Business",
             "pages": [
               "fiber-api/endpoint/list-business-ip-assignments",
               "fiber-api/endpoint/get-business-bandwidth-usage"
+            ]
+          },
+          {
+            "group": "Speed Test API",
+            "pages": [
+              "speed-api/introduction",
+              "speed-api/endpoint/health-check",
+              "speed-api/endpoint/latency-test",
+              "speed-api/endpoint/jitter-test",
+              "speed-api/endpoint/latency-variance",
+              "speed-api/endpoint/download-test",
+              "speed-api/endpoint/upload-test",
+              "speed-api/endpoint/advanced-download",
+              "speed-api/endpoint/advanced-upload",
+              "speed-api/endpoint/full-test",
+              "speed-api/endpoint/advanced-test",
+              "speed-api/endpoint/custom-test",
+              "speed-api/endpoint/list-servers",
+              "speed-api/endpoint/list-results",
+              "speed-api/endpoint/get-result",
+              "speed-api/endpoint/get-statistics",
+              "speed-api/endpoint/comparison-report",
+              "speed-api/endpoint/realtime-stream"
             ]
           }
         ]
