@@ -1,64 +1,95 @@
 ---
 title: "Hixbe Developer Documentation"
-description: "Build powerful applications with Hixbe's Payment Gateway, SMS Gateway, and Certification & Badge APIs"
+description: "Build powerful applications with Hixbe's comprehensive suite of APIs - from payments and messaging to network infrastructure and certification"
 ---
 
 ## Welcome to Hixbe Developer Docs
 
-Hixbe provides a comprehensive suite of APIs to help you build modern applications. From processing payments and sending SMS messages to issuing digital credentials and badges, our APIs are designed to be reliable, secure, and easy to integrate.
+Hixbe provides a complete suite of enterprise-grade APIs to power your applications. Whether you're building fintech solutions, communication platforms, network infrastructure tools, or credential management systems, our APIs are designed to be reliable, secure, and developer-friendly.
 
-## Our Services
+## 🚀 Core APIs
 
-<Columns cols={3}>
+<CardGroup cols={2}>
   <Card
-    title="Account management"
-    icon="credit-card"
+    title="Account Management API"
+    icon="users"
     href="/account-api/introduction"
   >
-    Manage your account easily with our developer friendly echosystem. 
-  Features include account registration, API key management, usage tracking, billing, and developer dashboard access.
+    Complete identity and access management with JWT authentication, multi-tenant organizations, granular RBAC, service entitlements, and comprehensive audit logging.
   </Card>
   <Card
-    title="SMS Gateway"
-    icon="message"
-    href="/sms-api/introduction"
-  >
-    Send SMS messages globally with our reliable SMS gateway. Features include bulk messaging, sender ID management, templates, and delivery webhooks.
-  </Card>
-  <Card
-    title="Certification & Badge"
-    icon="certificate"
-    href="/certify-api/introduction"
-  >
-    Issue and manage digital credentials, badges, and certificates. Perfect for education, professional development, and achievement tracking.
-  </Card>
-</Columns>
-
-<Columns cols={3}>
-  <Card
-    title="Payment Gateway"
+    title="Payment Gateway API"
     icon="credit-card"
     href="/payment-api/introduction"
   >
-    Process payments securely with our comprehensive payment gateway. Support for payment intents, methods, customers, refunds, and webhooks.
+    Process payments securely with payment intents, methods, customers, refunds, and real-time webhooks. Amounts in smallest currency unit with full idempotency support.
   </Card>
   <Card
-    title="SMS Gateway"
+    title="SMS Gateway API"
     icon="message"
     href="/sms-api/introduction"
   >
-    Send SMS messages globally with our reliable SMS gateway. Features include bulk messaging, sender ID management, templates, and delivery webhooks.
+    Send SMS messages globally with support for OTP, transactional, and promotional messaging. Features bulk sending, sender ID management, templates, and delivery tracking.
   </Card>
   <Card
-    title="Certification & Badge"
+    title="Certification & Badge API"
     icon="certificate"
     href="/certify-api/introduction"
   >
-    Issue and manage digital credentials, badges, and certificates. Perfect for education, professional development, and achievement tracking.
+    Issue and manage digital credentials, certificates, and badges with public verification, revocation capabilities, and comprehensive audit trails.
   </Card>
-</Columns>
+</CardGroup>
 
-## Getting Started
+## 🌐 Network & Infrastructure APIs
+
+<CardGroup cols={2}>
+  <Card
+    title="Fiber API"
+    icon="network-wired"
+    href="/fiber-api/introduction"
+  >
+    Manage fiber internet services with separate consumer and business interfaces. Monitor network status, track usage analytics, and manage IP assignments.
+  </Card>
+  <Card
+    title="RPKI API"
+    icon="shield-check"
+    href="/rpki-api/introduction"
+  >
+    Route origin validation and RPKI infrastructure monitoring. Check BGP announcements, validate routes in bulk, and get real-time delta updates.
+  </Card>
+  <Card
+    title="Speed Test API"
+    icon="gauge-high"
+    href="/speed-api/introduction"
+  >
+    Comprehensive network speed testing with latency, jitter, download, and upload tests. Real-time streaming, server selection, and historical statistics.
+  </Card>
+</CardGroup>
+
+## 🎯 Key Features
+
+<CardGroup cols={3}>
+  <Card title="RESTful Design" icon="code">
+    Clean, predictable API design following REST principles with comprehensive OpenAPI specifications.
+  </Card>
+  <Card title="JWT Authentication" icon="key">
+    Industry-standard Bearer token authentication with automatic refresh and secure session management.
+  </Card>
+  <Card title="Header Versioning" icon="timeline">
+    Use `Hixbe-Version: 2026-01-01` header for API versioning with backward compatibility.
+  </Card>
+  <Card title="Real-time Webhooks" icon="bolt">
+    Receive instant notifications for events across payment, SMS, and certification services.
+  </Card>
+  <Card title="Comprehensive RBAC" icon="shield">
+    Granular role-based access control with organization-level permissions and service entitlements.
+  </Card>
+  <Card title="Developer-Friendly" icon="heart">
+    Clear error messages, comprehensive docs, and interactive API playground for testing.
+  </Card>
+</CardGroup>
+
+## 📚 Getting Started
 
 <Card
   title="Quick Start Guide"
@@ -69,7 +100,81 @@ Hixbe provides a comprehensive suite of APIs to help you build modern applicatio
   Get up and running with your first API integration in minutes. Learn about authentication, versioning, and making your first API call.
 </Card>
 
-## Latest Updates
+<CardGroup cols={2}>
+  <Card
+    title="Authentication Guide"
+    icon="lock"
+    href="/faq-guides/authentication"
+  >
+    Learn how to authenticate with Bearer tokens and manage JWT sessions.
+  </Card>
+  <Card
+    title="Webhooks Integration"
+    icon="webhook"
+    href="/faq-guides/webhooks"
+  >
+    Set up real-time event notifications with signature verification.
+  </Card>
+  <Card
+    title="Error Handling"
+    icon="triangle-exclamation"
+    href="/faq-guides/error-handling"
+  >
+    Understand error codes, retry strategies, and best practices.
+  </Card>
+  <Card
+    title="Best Practices"
+    icon="star"
+    href="/faq-guides/best-practices"
+  >
+    Learn patterns for rate limiting, caching, and production deployments.
+  </Card>
+</CardGroup>
+
+## 🛠️ Additional Services
+
+<CardGroup cols={3}>
+  <Card
+    title="DNS Security"
+    icon="globe"
+    href="/more/dns-service"
+  >
+    Secure DNS infrastructure and content filtering services.
+  </Card>
+  <Card
+    title="NTP Servers"
+    icon="clock"
+    href="/more/ntp-servers"
+  >
+    Precise time synchronization for Bangladesh and global regions.
+  </Card>
+  <Card
+    title="Speed Test Service"
+    icon="tachometer-alt"
+    href="/more/speed-test"
+  >
+    Public speed testing infrastructure and endpoints.
+  </Card>
+</CardGroup>
+
+## 📊 Use Cases
+
+<AccordionGroup>
+  <Accordion title="Fintech & E-commerce" icon="shopping-cart">
+    Use **Payment API** for secure transactions, **Account API** for user management, and **SMS API** for OTP verification and order notifications.
+  </Accordion>
+  <Accordion title="Education & Certification" icon="graduation-cap">
+    Issue digital certificates with **Certification API**, manage student accounts with **Account API**, and notify recipients via **SMS API**.
+  </Accordion>
+  <Accordion title="Network Operations" icon="server">
+    Monitor BGP routing with **RPKI API**, test network performance with **Speed Test API**, and manage fiber services with **Fiber API**.
+  </Accordion>
+  <Accordion title="SaaS Platforms" icon="cloud">
+    Build multi-tenant applications with **Account API** RBAC, process subscriptions with **Payment API**, and send notifications via **SMS API**.
+  </Accordion>
+</AccordionGroup>
+
+## 🔄 Latest Updates
 
 <Card
   title="Changelog"
@@ -77,16 +182,33 @@ Hixbe provides a comprehensive suite of APIs to help you build modern applicatio
   href="/changelog"
   horizontal
 >
-  Stay up to date with the latest API changes, new features, and improvements.
+  December 2025: RPKI API launch with route validation, delta updates, and monitoring. Stay up to date with all API changes and new features.
 </Card>
 
-## Need Help?
+## 💬 Need Help?
 
-<Card
-  title="Support"
-  icon="life-ring"
-  href="mailto:support@hixbe.com"
-  horizontal
->
-  Contact our support team for technical assistance and integration guidance.
-</Card>
+<CardGroup cols={2}>
+  <Card
+    title="Contact Support"
+    icon="life-ring"
+    href="mailto:support@hixbe.com"
+  >
+    Get technical assistance and integration guidance from our team.
+  </Card>
+  <Card
+    title="API Status"
+    icon="signal"
+    href="https://dash.hixbe.com"
+  >
+    Monitor real-time API status and performance metrics.
+  </Card>
+</CardGroup>
+
+## 🌟 Why Choose Hixbe?
+
+- **Enterprise-Ready**: Built for scale with 99.9% uptime SLA
+- **Secure by Default**: JWT authentication, HTTPS everywhere, and comprehensive audit logs
+- **Developer-Focused**: Clear documentation, OpenAPI specs, and interactive playground
+- **Comprehensive**: Everything you need from identity to payments to infrastructure
+- **Modern Stack**: RESTful APIs with JSON, WebSocket support, and real-time updates
+- **Global Reach**: SMS delivery worldwide, distributed infrastructure, and low latency

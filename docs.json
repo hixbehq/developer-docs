@@ -320,28 +320,28 @@
         ]
       },
       {
-        "tab": "Fiber API",
+        "tab": "Network API",
         "groups": [
           {
-            "group": "Fiber API",
+            "group": "Network API",
             "pages": [
-              "fiber-api/introduction"
+              "network-api/introduction"
             ]
           },
           {
             "group": "Consumer",
             "pages": [
-              "fiber-api/endpoint/get-consumer-network",
-              "fiber-api/endpoint/get-consumer-account",
-              "fiber-api/endpoint/get-consumer-usage",
-              "fiber-api/endpoint/get-speedtest-config"
+              "network-api/endpoint/get-consumer-network",
+              "network-api/endpoint/get-consumer-account",
+              "network-api/endpoint/get-consumer-usage",
+              "network-api/endpoint/get-speedtest-config"
             ]
           },
           {
             "group": "Business",
             "pages": [
-              "fiber-api/endpoint/list-business-ip-assignments",
-              "fiber-api/endpoint/get-business-bandwidth-usage"
+              "network-api/endpoint/list-business-ip-assignments",
+              "network-api/endpoint/get-business-bandwidth-usage"
             ]
           },
           {
