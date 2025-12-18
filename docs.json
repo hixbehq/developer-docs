@@ -345,6 +345,37 @@
             ]
           },
           {
+            "group": "RPKI",
+            "pages": [
+              "rpki-api/introduction"
+            ]
+          },
+          {
+            "group": "Route Validation",
+            "pages": [
+              "rpki-api/endpoint/check-validity-path",
+              "rpki-api/endpoint/check-validity-query",
+              "rpki-api/endpoint/validate-routes"
+            ]
+          },
+          {
+            "group": "Status & Monitoring",
+            "pages": [
+              "rpki-api/endpoint/get-status",
+              "rpki-api/endpoint/get-service-status",
+              "rpki-api/endpoint/get-version",
+              "rpki-api/endpoint/get-log",
+              "rpki-api/endpoint/get-metrics"
+            ]
+          },
+          {
+            "group": "Delta Updates",
+            "pages": [
+              "rpki-api/endpoint/get-json-delta",
+              "rpki-api/endpoint/get-delta-notify"
+            ]
+          },
+          {
             "group": "Speed Test API",
             "pages": [
               "speed-api/introduction",
